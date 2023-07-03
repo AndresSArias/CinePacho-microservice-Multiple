@@ -21,13 +21,11 @@ public class MovieTheaterEntity {
     @Column(nullable = false)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_theater", nullable = false)
-    private TheaterEntity theater;
+    @Column(nullable = false)
+    private Long theaterId;
 
-    @ManyToOne
-    @JoinColumn(name = "id_movie", nullable = false)
-    private MovieEntity movie;
+    @Column(nullable = false)
+    private Long movieId;
 
     @Column(nullable = false)
     private LocalDate day;
@@ -35,4 +33,9 @@ public class MovieTheaterEntity {
     @Column(nullable = false)
     private LocalTime schedule;
 
+    @Column(nullable = false)
+    private String chairGeneral;
+
+    @Column(nullable = false)
+    private String chairPreferencial;
 }

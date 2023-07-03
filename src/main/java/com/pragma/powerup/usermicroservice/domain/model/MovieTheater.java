@@ -9,13 +9,17 @@ public class MovieTheater {
     private Long idMovie;
     private LocalDate day;
     private LocalTime schedule;
+    private String chairGeneral;
+    private String chairPreferencial;
 
-    public MovieTheater(Long id, Long idTheater, Long idMovie, LocalDate day, LocalTime schedule) {
+    public MovieTheater(Long id, Long idTheater, Long idMovie, LocalDate day, LocalTime schedule, String chairGeneral, String chairPreferencial) {
         this.id = id;
         this.idTheater = idTheater;
         this.idMovie = idMovie;
         this.day = day;
         this.schedule = schedule;
+        this.chairGeneral = chairGeneral;
+        this.chairPreferencial = chairPreferencial;
     }
 
     public Long getId() {
@@ -56,5 +60,21 @@ public class MovieTheater {
 
     public void setSchedule(LocalTime schedule) {
         this.schedule = schedule;
+    }
+
+    public String getChairGeneral() {
+        return chairGeneral;
+    }
+
+    public void setChairGeneral(String chairGeneral) {
+        this.chairGeneral = chairGeneral;
+    }
+
+    public String getChairPreferencial() {
+        return chairPreferencial;
+    }
+
+    public void setChairPreferencial(String chairPreferencial) {
+        this.chairPreferencial = chairPreferencial;
     }
 }

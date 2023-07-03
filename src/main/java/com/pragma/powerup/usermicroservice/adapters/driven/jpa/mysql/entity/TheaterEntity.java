@@ -25,10 +25,4 @@ public class TheaterEntity {
     @Column(nullable = false)
     private Integer salaId;
 
-    @Column(nullable = false)
-    private String sillasGeneral;
-
-    @Column(nullable = false)
-    private String sillasPreferencial;
-
 }

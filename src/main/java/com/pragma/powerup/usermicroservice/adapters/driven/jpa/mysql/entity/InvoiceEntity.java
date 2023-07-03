@@ -21,8 +21,8 @@ public class InvoiceEntity {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_theaters", nullable = false)
-    private TheaterEntity theater;
+    @JoinColumn(name = "id_show",nullable = false)
+    private MovieTheaterEntity idShow;
 
     @Column(nullable = false)
     private String clientId;
@@ -32,6 +32,9 @@ public class InvoiceEntity {
 
     @Column(nullable = false)
     private LocalDate date;
+
+    @Column(nullable = false)
+    private Integer quantityTicket;
 
     @Column(nullable = false)
     private Integer netValue;

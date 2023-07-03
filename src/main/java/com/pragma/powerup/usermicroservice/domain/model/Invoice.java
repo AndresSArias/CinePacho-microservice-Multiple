@@ -4,19 +4,20 @@ import java.time.LocalDate;
 
 public class Invoice {
     private Long id;
-    private Long theaterId;
+    private Long showId;
     private String clientId;
     private Double ratingMovie;
     private LocalDate date;
     private Integer netValue;
     private String state;
 
-    public Invoice(Long id, Long theaterId, String clientId, Double ratingMovie, LocalDate date, Integer netValue, String state) {
+    public Invoice(Long id, Long showId, String clientId, Double ratingMovie, LocalDate date, Integer netValue, String state) {
         this.id = id;
-        this.theaterId = theaterId;
+        this.showId = showId;
         this.clientId = clientId;
         this.ratingMovie = ratingMovie;
         this.date = date;
+
         this.netValue = netValue;
         this.state = state;
     }
@@ -29,12 +30,12 @@ public class Invoice {
         this.id = id;
     }
 
-    public Long getTheaterId() {
-        return theaterId;
+    public Long getShowId() {
+        return showId;
     }
 
-    public void setTheaterId(Long theaterId) {
-        this.theaterId = theaterId;
+    public void setShowId(Long showId) {
+        this.showId = showId;
     }
 
     public String getClientId() {
