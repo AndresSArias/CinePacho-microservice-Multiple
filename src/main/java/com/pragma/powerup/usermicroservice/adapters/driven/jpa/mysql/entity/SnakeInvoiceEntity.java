@@ -20,15 +20,18 @@ public class SnakeInvoiceEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_snack", nullable = false)
-    private SnackEntity snack;
+    private SnackEntity idSnack;
 
     @ManyToOne
     @JoinColumn(name = "id_invoice", nullable = false)
-    private InvoiceEntity invoice;
+    private InvoiceEntity idInvoice;
 
     @Column(nullable = false)
     private Integer quantity;
 
     @Column(nullable = false)
     private Integer value;
+
+    @Column(nullable = false)
+    private Integer state;
 }

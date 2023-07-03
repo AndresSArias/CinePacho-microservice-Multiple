@@ -4,20 +4,17 @@ import java.time.LocalDate;
 
 public class Invoice {
     private Long id;
-    private Long showId;
     private String clientId;
     private Double ratingMovie;
     private LocalDate date;
     private Integer netValue;
     private String state;
 
-    public Invoice(Long id, Long showId, String clientId, Double ratingMovie, LocalDate date, Integer netValue, String state) {
+    public Invoice(Long id,String clientId, Double ratingMovie, LocalDate date, Integer netValue, String state) {
         this.id = id;
-        this.showId = showId;
         this.clientId = clientId;
         this.ratingMovie = ratingMovie;
         this.date = date;
-
         this.netValue = netValue;
         this.state = state;
     }
@@ -28,14 +25,6 @@ public class Invoice {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getShowId() {
-        return showId;
-    }
-
-    public void setShowId(Long showId) {
-        this.showId = showId;
     }
 
     public String getClientId() {

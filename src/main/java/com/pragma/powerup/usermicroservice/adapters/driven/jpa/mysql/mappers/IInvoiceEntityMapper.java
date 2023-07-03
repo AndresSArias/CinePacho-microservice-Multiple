@@ -11,8 +11,7 @@ import org.mapstruct.ReportingPolicy;
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 
 public interface IInvoiceEntityMapper {
-    @Mapping(target = "theaterEntity.id", source = "theater.id")
     InvoiceEntity toEntity(Invoice invoice);
-    @Mapping(target = "theater.id", source = "theaterEntity.id")
+
     Invoice toModel(InvoiceEntity entity);
 }

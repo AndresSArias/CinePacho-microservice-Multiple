@@ -20,10 +20,6 @@ public class InvoiceEntity {
     @Column(nullable = false)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_show",nullable = false)
-    private MovieTheaterEntity idShow;
-
     @Column(nullable = false)
     private String clientId;
 
@@ -33,10 +29,7 @@ public class InvoiceEntity {
     @Column(nullable = false)
     private LocalDate date;
 
-    @Column(nullable = false)
-    private Integer quantityTicket;
-
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Integer netValue;
 
     @Column(nullable = false)
