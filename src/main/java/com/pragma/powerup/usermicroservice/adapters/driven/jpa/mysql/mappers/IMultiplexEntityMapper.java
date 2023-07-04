@@ -8,8 +8,9 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
-public interface IMultiplexEntityMapper {
-    Multiplex toMultiplexModel (MultiplexEntity multiplexEntity);
 
-    MultiplexEntity toMultiplexEntity (Multiplex multiplex);
+public interface IMultiplexEntityMapper {
+    MultiplexEntity toEntity(Multiplex multiplex);
+
+    Multiplex toModel(MultiplexEntity entity);
 }

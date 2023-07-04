@@ -7,25 +7,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "multiplexs")
+@Table(name = "snacks")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class MultiplexEntity {
+public class SnackEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
-    private Integer numSala;
+    private Integer price;
 
     @Column(nullable = false)
-    private Integer pointTicket;
-
-    @Column(nullable = false)
-    private Integer pointSnack;
+    private String url;
 }

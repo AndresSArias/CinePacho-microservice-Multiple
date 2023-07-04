@@ -5,27 +5,33 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.sql.Time;
 
 @Entity
-@Table(name = "multiplexs")
+@Table(name = "movies")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class MultiplexEntity {
+public class    MovieEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String title;
 
     @Column(nullable = false)
-    private Integer numSala;
+    private Time duration;
 
     @Column(nullable = false)
-    private Integer pointTicket;
+    private Integer yearAllowed;
 
     @Column(nullable = false)
-    private Integer pointSnack;
+    private String synopsis;
+
+    @Column(nullable = false)
+    private String url;
 }

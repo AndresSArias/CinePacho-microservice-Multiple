@@ -15,10 +15,14 @@ import lombok.Setter;
 public class TheaterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_multiplex", nullable = false)
-    private MultiplexEntity multiplexEntity;
+    private MultiplexEntity multiplex;
+
+    @Column(nullable = false)
+    private Integer salaId;
 
 }

@@ -6,26 +6,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
-@Table(name = "multiplexs")
+@Table(name = "invoices")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class MultiplexEntity {
+public class InvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String clientId;
+
+    @Column(nullable = true)
+    private Double ratingMovie;
 
     @Column(nullable = false)
-    private Integer numSala;
+    private LocalDate date;
+
+    @Column(nullable = true)
+    private Integer netValue;
 
     @Column(nullable = false)
-    private Integer pointTicket;
-
-    @Column(nullable = false)
-    private Integer pointSnack;
+    private String state;
 }
