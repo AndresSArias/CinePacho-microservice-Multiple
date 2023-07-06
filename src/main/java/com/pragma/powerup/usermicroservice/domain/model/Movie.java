@@ -6,11 +6,11 @@ public class Movie {
     private Long id;
     private String title;
     private Time duration;
-    private Integer yearAllowed;
+    private int yearAllowed;
     private String synopsis;
     private String url;
 
-    public Movie(Long id, String title, Time duration, Integer yearAllowed, String synopsis, String url) {
+    public Movie(Long id, String title, Time duration, int yearAllowed, String synopsis, String url) {
         this.id = id;
         this.title = title;
         this.duration = duration;
@@ -43,11 +43,11 @@ public class Movie {
         this.duration = duration;
     }
 
-    public Integer getYearAllowed() {
+    public int getYearAllowed() {
         return yearAllowed;
     }
 
-    public void setYearAllowed(Integer yearAllowed) {
+    public void setYearAllowed(int yearAllowed) {
         this.yearAllowed = yearAllowed;
     }
 

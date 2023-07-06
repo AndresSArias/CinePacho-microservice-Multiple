@@ -30,7 +30,7 @@ public class InvoiceEntity {
     private LocalDate date;
 
     @Column(nullable = true)
-    private Integer netValue;
+    private int netValue;
 
     @Column(nullable = false)
     private String state;

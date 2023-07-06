@@ -27,11 +27,11 @@ public class SnakeInvoiceEntity {
     private InvoiceEntity idInvoice;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private int quantity;
 
     @Column(nullable = false)
-    private Integer value;
+    private int value;
 
     @Column(nullable = false)
-    private Integer state;
+    private int state;
 }

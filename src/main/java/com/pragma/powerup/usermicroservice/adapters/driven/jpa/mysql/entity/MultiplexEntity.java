@@ -21,11 +21,11 @@ public class MultiplexEntity {
     private String name;
 
     @Column(nullable = false)
-    private Integer numSala;
+    private int numSala;
 
     @Column(nullable = false)
-    private Integer pointTicket;
+    private int pointTicket;
 
     @Column(nullable = false)
-    private Integer pointSnack;
+    private int pointSnack;
 }

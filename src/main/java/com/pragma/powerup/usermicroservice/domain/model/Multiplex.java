@@ -3,11 +3,11 @@ package com.pragma.powerup.usermicroservice.domain.model;
 public class Multiplex {
     private Long id;
     private String name;
-    private Integer numSala;
-    private Integer pointTicket;
-    private Integer pointSnack;
+    private int numSala;
+    private int pointTicket;
+    private int pointSnack;
 
-    public Multiplex(Long id, String name, Integer numSala, Integer pointTicket, Integer pointSnack) {
+    public Multiplex(Long id, String name, int numSala, int pointTicket, int pointSnack) {
         this.id = id;
         this.name = name;
         this.numSala = numSala;
@@ -31,27 +31,27 @@ public class Multiplex {
         this.name = name;
     }
 
-    public Integer getNumSala() {
+    public int getNumSala() {
         return numSala;
     }
 
-    public void setNumSala(Integer numSala) {
+    public void setNumSala(int numSala) {
         this.numSala = numSala;
     }
 
-    public Integer getPointTicket() {
+    public int getPointTicket() {
         return pointTicket;
     }
 
-    public void setPointTicket(Integer pointTicket) {
+    public void setPointTicket(int pointTicket) {
         this.pointTicket = pointTicket;
     }
 
-    public Integer getPointSnack() {
+    public int getPointSnack() {
         return pointSnack;
     }
 
-    public void setPointSnack(Integer pointSnack) {
+    public void setPointSnack(int pointSnack) {
         this.pointSnack = pointSnack;
     }
 }

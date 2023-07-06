@@ -36,8 +36,8 @@ public class ShowInvoiceEntity {
     private String quantityChairPreferential;
 
     @Column(nullable = false)
-    private Integer value;
+    private int value;
 
     @Column(nullable = false)
-    private Integer state;
+    private int state;
 }

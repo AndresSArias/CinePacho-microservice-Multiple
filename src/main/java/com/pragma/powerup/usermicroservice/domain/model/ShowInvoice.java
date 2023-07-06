@@ -6,10 +6,10 @@ public class ShowInvoice {
     private Long invoiceId;
     private String quantityChairGeneral;
     private String quantityChairPreferential;
-    private Integer value;
-    private Integer state;
+    private int value;
+    private int state;
 
-    public ShowInvoice(Long id, Long showId, Long invoiceId, String quantityChairGeneral, String quantityChairPreferential, Integer value, Integer state) {
+    public ShowInvoice(Long id, Long showId, Long invoiceId, String quantityChairGeneral, String quantityChairPreferential, int value, int state) {
         this.id = id;
         this.showId = showId;
         this.invoiceId = invoiceId;
@@ -59,19 +59,19 @@ public class ShowInvoice {
         this.quantityChairPreferential = quantityChairPreferential;
     }
 
-    public Integer getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
-    public Integer getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(Integer state) {
+    public void setState(int state) {
         this.state = state;
     }
 }

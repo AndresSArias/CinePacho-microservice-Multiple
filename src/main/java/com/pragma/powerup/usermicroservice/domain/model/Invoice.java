@@ -7,10 +7,10 @@ public class Invoice {
     private String clientId;
     private Double ratingMovie;
     private LocalDate date;
-    private Integer netValue;
+    private int netValue;
     private String state;
 
-    public Invoice(Long id,String clientId, Double ratingMovie, LocalDate date, Integer netValue, String state) {
+    public Invoice(Long id,String clientId, Double ratingMovie, LocalDate date, int netValue, String state) {
         this.id = id;
         this.clientId = clientId;
         this.ratingMovie = ratingMovie;
@@ -51,11 +51,11 @@ public class Invoice {
         this.date = date;
     }
 
-    public Integer getNetValue() {
+    public int getNetValue() {
         return netValue;
     }
 
-    public void setNetValue(Integer netValue) {
+    public void setNetValue(int netValue) {
         this.netValue = netValue;
     }
 

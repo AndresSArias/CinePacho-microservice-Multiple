@@ -23,6 +23,6 @@ public class TheaterEntity {
     private MultiplexEntity multiplex;
 
     @Column(nullable = false)
-    private Integer salaId;
+    private int salaId;
 
 }

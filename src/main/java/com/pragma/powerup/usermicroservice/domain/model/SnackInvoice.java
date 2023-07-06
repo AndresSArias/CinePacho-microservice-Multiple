@@ -4,10 +4,10 @@ public class SnackInvoice {
     private Long id;
     private Long snackId;
     private Long invoiceId;
-    private Integer quantity;
-    private Integer value;
+    private int quantity;
+    private int value;
 
-    public SnackInvoice(Long id, Long snackId, Long invoiceId, Integer quantity, Integer value) {
+    public SnackInvoice(Long id, Long snackId, Long invoiceId, int quantity, int value) {
         this.id = id;
         this.snackId = snackId;
         this.invoiceId = invoiceId;
@@ -39,19 +39,19 @@ public class SnackInvoice {
         this.invoiceId = invoiceId;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public Integer getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(int value) {
         this.value = value;
     }
 }

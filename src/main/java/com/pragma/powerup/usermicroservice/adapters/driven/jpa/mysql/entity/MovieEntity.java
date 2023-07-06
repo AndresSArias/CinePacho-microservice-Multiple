@@ -27,7 +27,7 @@ public class    MovieEntity {
     private Time duration;
 
     @Column(nullable = false)
-    private Integer yearAllowed;
+    private int yearAllowed;
 
     @Column(nullable = false)
     private String synopsis;

@@ -22,7 +22,7 @@ public class SnackEntity {
     private String name;
 
     @Column(nullable = false)
-    private Integer price;
+    private int price;
 
     @Column(nullable = false)
     private String url;

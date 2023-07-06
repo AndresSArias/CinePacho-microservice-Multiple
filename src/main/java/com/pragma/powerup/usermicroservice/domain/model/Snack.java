@@ -3,10 +3,10 @@ package com.pragma.powerup.usermicroservice.domain.model;
 public class Snack {
     private Long id;
     private String name;
-    private Integer price;
+    private int price;
     private String url;
 
-    public Snack(Long id, String name, Integer price, String url) {
+    public Snack(Long id, String name, int price, String url) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -29,11 +29,11 @@ public class Snack {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
