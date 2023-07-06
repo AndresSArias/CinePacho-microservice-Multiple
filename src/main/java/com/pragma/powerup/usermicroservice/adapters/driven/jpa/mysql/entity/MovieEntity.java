@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.sql.Time;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "movies")
@@ -20,16 +21,16 @@ public class    MovieEntity {
     @Column(nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 80)
     private String title;
 
     @Column(nullable = false)
-    private Time duration;
+    private LocalTime duration;
 
     @Column(nullable = false)
     private int yearAllowed;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private String synopsis;
 
     @Column(nullable = false)

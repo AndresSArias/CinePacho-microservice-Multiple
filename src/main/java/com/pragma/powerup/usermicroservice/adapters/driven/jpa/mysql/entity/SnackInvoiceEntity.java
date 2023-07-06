@@ -5,27 +5,32 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "snack_invoice")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class OrderEntity {
+public class SnackInvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String idClient;
-    @Column(nullable = false)
-    private LocalDateTime date;
-    @Column(nullable = false)
-    private String state;
-    @Column(nullable = true)
-    private String idChef;
+
     @ManyToOne
-    @JoinColumn(name = "id_restaurant", nullable = false)
-    private RestaurantEntity restaurantEntity;
+    @JoinColumn(name = "id_snack", nullable = false)
+    private SnackEntity idSnack;
+
+    @ManyToOne
+    @JoinColumn(name = "id_invoice", nullable = false)
+    private InvoiceEntity idInvoice;
+
+    @Column(nullable = false)
+    private int quantity;
+
+    @Column(nullable = false)
+    private int value;
+
+    @Column(nullable = false, length = 50)
+    private String state;
 }

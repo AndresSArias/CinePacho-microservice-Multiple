@@ -2,14 +2,14 @@ package com.pragma.powerup.usermicroservice.domain.model;
 
 public class ShowInvoice {
     private Long id;
-    private Long showId;
-    private Long invoiceId;
+    private MovieTheater showId;
+    private Invoice invoiceId;
     private String quantityChairGeneral;
     private String quantityChairPreferential;
     private int value;
-    private int state;
+    private String state;
 
-    public ShowInvoice(Long id, Long showId, Long invoiceId, String quantityChairGeneral, String quantityChairPreferential, int value, int state) {
+    public ShowInvoice(Long id, MovieTheater showId, Invoice invoiceId, String quantityChairGeneral, String quantityChairPreferential, int value, String state) {
         this.id = id;
         this.showId = showId;
         this.invoiceId = invoiceId;
@@ -27,19 +27,19 @@ public class ShowInvoice {
         this.id = id;
     }
 
-    public Long getShowId() {
+    public MovieTheater getShowId() {
         return showId;
     }
 
-    public void setShowId(Long showId) {
+    public void setShowId(MovieTheater showId) {
         this.showId = showId;
     }
 
-    public Long getInvoiceId() {
+    public Invoice getInvoiceId() {
         return invoiceId;
     }
 
-    public void setInvoiceId(Long invoiceId) {
+    public void setInvoiceId(Invoice invoiceId) {
         this.invoiceId = invoiceId;
     }
 
@@ -67,11 +67,11 @@ public class ShowInvoice {
         this.value = value;
     }
 
-    public int getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(String state) {
         this.state = state;
     }
 }

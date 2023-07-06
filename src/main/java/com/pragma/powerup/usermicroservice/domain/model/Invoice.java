@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 public class Invoice {
     private Long id;
-    private String clientId;
+    private Long idClient;
     private Double ratingMovie;
     private LocalDate date;
     private int netValue;
     private String state;
 
-    public Invoice(Long id,String clientId, Double ratingMovie, LocalDate date, int netValue, String state) {
+    public Invoice(Long id, Long idClient, Double ratingMovie, LocalDate date, int netValue, String state) {
         this.id = id;
-        this.clientId = clientId;
+        this.idClient = idClient;
         this.ratingMovie = ratingMovie;
         this.date = date;
         this.netValue = netValue;
@@ -27,12 +27,12 @@ public class Invoice {
         this.id = id;
     }
 
-    public String getClientId() {
-        return clientId;
+    public Long getIdClient() {
+        return idClient;
     }
 
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
     }
 
     public Double getRatingMovie() {

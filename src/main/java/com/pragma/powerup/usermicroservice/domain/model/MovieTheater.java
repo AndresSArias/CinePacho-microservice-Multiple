@@ -5,21 +5,21 @@ import java.time.LocalTime;
 
 public class MovieTheater {
     private Long id;
-    private Long idTheater;
-    private Long idMovie;
+    private Theater idTheater;
+    private Movie idMovie;
     private LocalDate day;
     private LocalTime schedule;
     private String chairGeneral;
-    private String chairPreferencial;
+    private String chairPreferential;
 
-    public MovieTheater(Long id, Long idTheater, Long idMovie, LocalDate day, LocalTime schedule, String chairGeneral, String chairPreferencial) {
+    public MovieTheater(Long id, Long Theater, Movie idMovie, LocalDate day, LocalTime schedule, String chairGeneral, String chairPreferential) {
         this.id = id;
         this.idTheater = idTheater;
         this.idMovie = idMovie;
         this.day = day;
         this.schedule = schedule;
         this.chairGeneral = chairGeneral;
-        this.chairPreferencial = chairPreferencial;
+        this.chairPreferential = chairPreferential;
     }
 
     public Long getId() {
@@ -30,19 +30,19 @@ public class MovieTheater {
         this.id = id;
     }
 
-    public Long getIdTheater() {
+    public Theater getIdTheater() {
         return idTheater;
     }
 
-    public void setIdTheater(Long idTheater) {
+    public void setIdTheater(Theater idTheater) {
         this.idTheater = idTheater;
     }
 
-    public Long getIdMovie() {
+    public Movie getIdMovie() {
         return idMovie;
     }
 
-    public void setIdMovie(Long idMovie) {
+    public void setIdMovie(Movie idMovie) {
         this.idMovie = idMovie;
     }
 
@@ -70,11 +70,11 @@ public class MovieTheater {
         this.chairGeneral = chairGeneral;
     }
 
-    public String getChairPreferencial() {
-        return chairPreferencial;
+    public String getChairPreferential() {
+        return chairPreferential;
     }
 
-    public void setChairPreferencial(String chairPreferencial) {
-        this.chairPreferencial = chairPreferencial;
+    public void setChairPreferential(String chairPreferential) {
+        this.chairPreferential = chairPreferential;
     }
 }

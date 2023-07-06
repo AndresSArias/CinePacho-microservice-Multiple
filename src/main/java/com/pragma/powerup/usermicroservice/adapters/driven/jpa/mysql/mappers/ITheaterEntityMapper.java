@@ -11,8 +11,8 @@ import org.mapstruct.ReportingPolicy;
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 
 public interface ITheaterEntityMapper {
-    @Mapping(target = "multiplexEntity.id", source = "multiplex.id")
+    @Mapping(target = "multiplex.id", source = "idMultiplex.id")
     TheaterEntity toEntity(Theater theater);
-    @Mapping(target = "multiplex.id", source = "multiplex.id")
+    @Mapping(target = "idMultiplex.id", source = "multiplex.id")
     Theater toModel(TheaterEntity entity);
 }

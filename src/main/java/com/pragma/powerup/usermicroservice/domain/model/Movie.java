@@ -1,16 +1,17 @@
 package com.pragma.powerup.usermicroservice.domain.model;
 
 import java.sql.Time;
+import java.time.LocalTime;
 
 public class Movie {
     private Long id;
     private String title;
-    private Time duration;
+    private LocalTime duration;
     private int yearAllowed;
     private String synopsis;
     private String url;
 
-    public Movie(Long id, String title, Time duration, int yearAllowed, String synopsis, String url) {
+    public Movie(Long id, String title, LocalTime duration, int yearAllowed, String synopsis, String url) {
         this.id = id;
         this.title = title;
         this.duration = duration;
@@ -35,11 +36,11 @@ public class Movie {
         this.title = title;
     }
 
-    public Time getDuration() {
+    public LocalTime getDuration() {
         return duration;
     }
 
-    public void setDuration(Time duration) {
+    public void setDuration(LocalTime duration) {
         this.duration = duration;
     }
 

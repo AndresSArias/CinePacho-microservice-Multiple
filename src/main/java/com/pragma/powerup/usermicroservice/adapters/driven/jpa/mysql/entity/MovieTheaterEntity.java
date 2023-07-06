@@ -18,14 +18,15 @@ import java.time.LocalTime;
 public class MovieTheaterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private Long theaterId;
+    @ManyToOne
+    @JoinColumn(name = "id_theater", nullable = false)
+    private TheaterEntity theaterId;
 
-    @Column(nullable = false)
-    private Long movieId;
+    @ManyToOne
+    @JoinColumn(name = "id_movie", nullable = false)
+    private MovieEntity movieId;
 
     @Column(nullable = false)
     private LocalDate day;
@@ -33,9 +34,9 @@ public class MovieTheaterEntity {
     @Column(nullable = false)
     private LocalTime schedule;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 79)
     private String chairGeneral;
 
-    @Column(nullable = false)
-    private String chairPreferencial;
+    @Column(nullable = false, length = 39)
+    private String chairPreferential;
 }

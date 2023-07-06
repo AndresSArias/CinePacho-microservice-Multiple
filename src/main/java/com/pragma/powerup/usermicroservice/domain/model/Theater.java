@@ -2,11 +2,11 @@ package com.pragma.powerup.usermicroservice.domain.model;
 
 public class Theater {
     private Long id;
-    private Long idMultiplex;
+    private Multiplex idMultiplex;
     private int idSala;
 
 
-    public Theater(Long id, Long idMultiplex, int idSala) {
+    public Theater(Long id, Multiplex idMultiplex, int idSala) {
         this.id = id;
         this.idMultiplex = idMultiplex;
         this.idSala = idSala;
@@ -21,11 +21,11 @@ public class Theater {
         this.id = id;
     }
 
-    public Long getIdMultiplex() {
+    public Multiplex getIdMultiplex() {
         return idMultiplex;
     }
 
-    public void setIdMultiplex(Long idMultiplex) {
+    public void setIdMultiplex(Multiplex idMultiplex) {
         this.idMultiplex = idMultiplex;
     }
 

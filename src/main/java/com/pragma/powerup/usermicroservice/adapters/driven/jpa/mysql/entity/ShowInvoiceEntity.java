@@ -15,7 +15,6 @@ import lombok.Setter;
 public class ShowInvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Long id;
 
     @ManyToOne
@@ -27,9 +26,6 @@ public class ShowInvoiceEntity {
     private InvoiceEntity idInvoice;
 
     @Column(nullable = false)
-    private Long invoiceId;
-
-    @Column(nullable = false)
     private String quantityChairGeneral;
 
     @Column(nullable = false)
@@ -38,6 +34,6 @@ public class ShowInvoiceEntity {
     @Column(nullable = false)
     private int value;
 
-    @Column(nullable = false)
-    private int state;
+    @Column(nullable = false,length = 50)
+    private String state;
 }

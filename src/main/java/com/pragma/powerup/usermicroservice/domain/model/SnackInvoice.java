@@ -2,17 +2,20 @@ package com.pragma.powerup.usermicroservice.domain.model;
 
 public class SnackInvoice {
     private Long id;
-    private Long snackId;
-    private Long invoiceId;
+    private Snack snackId;
+    private Invoice invoiceId;
     private int quantity;
-    private int value;
 
-    public SnackInvoice(Long id, Long snackId, Long invoiceId, int quantity, int value) {
+    private int value;
+    private String state;
+
+    public SnackInvoice(Long id, Snack snackId, Invoice invoiceId, int quantity, int value, String state) {
         this.id = id;
         this.snackId = snackId;
         this.invoiceId = invoiceId;
         this.quantity = quantity;
         this.value = value;
+        this.state = state;
     }
 
     public Long getId() {
@@ -23,19 +26,19 @@ public class SnackInvoice {
         this.id = id;
     }
 
-    public Long getSnackId() {
+    public Snack getSnackId() {
         return snackId;
     }
 
-    public void setSnackId(Long snackId) {
+    public void setSnackId(Snack snackId) {
         this.snackId = snackId;
     }
 
-    public Long getInvoiceId() {
+    public Invoice getInvoiceId() {
         return invoiceId;
     }
 
-    public void setInvoiceId(Long invoiceId) {
+    public void setInvoiceId(Invoice invoiceId) {
         this.invoiceId = invoiceId;
     }
 
@@ -53,5 +56,13 @@ public class SnackInvoice {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

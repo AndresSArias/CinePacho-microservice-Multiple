@@ -10,11 +10,11 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface  IShowInvoiceMapper {
-    @Mapping(target = "movieTheaterEntity.id", source = "movieTheater.id")
-    @Mapping(target = "invoicesEntity.id", source = "invoices.id")
+    @Mapping(target = "showId.id", source = "idShow.id")
+    @Mapping(target = "invoiceId.id", source = "idInvoice.id")
     ShowInvoice entityToModel(ShowInvoiceEntity entity);
 
-    @Mapping(target = "movieTheater.id", source = "movieTheaterEntity.id")
-    @Mapping(target = "invoices.id", source = "invoicesEntity.id")
+    @Mapping(target = "idShow.id", source = "showId.id")
+    @Mapping(target = "idInvoice.id", source = "invoiceId.id")
     ShowInvoiceEntity modelToEntity(ShowInvoice model);
 }

@@ -1,4 +1,5 @@
 package com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.SnackInvoiceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-public interface ISnackInvoiceRepository extends JpaRepository<ISnackInvoiceRepository, Long> {
+public interface ISnackInvoiceRepository extends JpaRepository<SnackInvoiceEntity, Long> {
 }

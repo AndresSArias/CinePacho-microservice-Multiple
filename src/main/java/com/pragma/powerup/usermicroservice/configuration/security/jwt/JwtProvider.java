@@ -4,7 +4,6 @@ import com.nimbusds.jwt.JWT;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.JWTParser;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.PrincipalUser;
-import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.JwtResponseDto;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -77,22 +76,5 @@ public class JwtProvider {
         return false;
     }
 
-    public String refreshToken(JwtResponseDto jwtResponseDto) throws ParseException {
-        JWT jwt = JWTParser.parse(jwtResponseDto.getToken());
-        JWTClaimsSet claims = jwt.getJWTClaimsSet();
-        String nombreUsuario = claims.getSubject();
-        List<String> roles = claims.getStringListClaim(ROLES);
-        String idUser = claims.getStringClaim(IDUSER);
-
-
-        return Jwts.builder()
-                .setSubject(nombreUsuario)
-                .claim(IDUSER, idUser)
-                .claim(ROLES, roles)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expiration * 180))
-                .signWith(SignatureAlgorithm.HS256, secret.getBytes())
-                .compact();
-    }
 
 }

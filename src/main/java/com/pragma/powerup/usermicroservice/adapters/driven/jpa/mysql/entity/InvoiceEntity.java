@@ -17,11 +17,10 @@ import java.time.LocalDate;
 public class InvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private Long id;
 
     @Column(nullable = false)
-    private String clientId;
+    private Long idClient;
 
     @Column(nullable = true)
     private Double ratingMovie;
@@ -32,6 +31,6 @@ public class InvoiceEntity {
     @Column(nullable = true)
     private int netValue;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 50)
     private String state;
 }
