@@ -1,6 +1,7 @@
 package com.pragma.powerup.usermicroservice.domain.api.usecase;
 
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.MultiplexEntity;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MultiplexPointsResponseDto;
 import com.pragma.powerup.usermicroservice.domain.api.IMultiplexServicePort;
 import com.pragma.powerup.usermicroservice.domain.exceptions.LenghtPageException;
 import com.pragma.powerup.usermicroservice.domain.exceptions.LenghtSizeException;
@@ -28,10 +29,22 @@ public class MultiplexUseCase implements IMultiplexServicePort {
 
     @Override
     public Multiplex saveMultiplex(Multiplex multiplex) {
-        return multiplexPersistencePort.saveMultiplex(multiplex);
+        Multiplex multiplex1 = multiplexPersistencePort.saveMultiplex(multiplex);
+        multiplexPersistencePort.createTheatres(multiplex1);
+        return multiplex1;
     }
 
     public List<Multiplex> getAllMultiplex() {
         return multiplexPersistencePort.getAllMultiplex();
     }
+
+    @Override
+    public Multiplex getMultiplexById(Long idMultiplex) {
+        return multiplexPersistencePort.getMultiplexById(idMultiplex);
+    }
+
+    public Multiplex setMultiplexById(Long idMultiplex,MultiplexPointsResponseDto multiplexRequestDto) {
+        return multiplexPersistencePort.updatePoints(idMultiplex,multiplexRequestDto);
+    }
+
 }

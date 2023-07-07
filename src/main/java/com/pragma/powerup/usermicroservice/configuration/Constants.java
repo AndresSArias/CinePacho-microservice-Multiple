@@ -8,13 +8,17 @@ public class Constants {
 
     public static final String MULTIPLEX_CREATED_MESSAGE = "Multiplex created succesfully";
     public static final String MULTIPLEX_ALREADY_EXISTS_MESSAGE = "A multiplex already exists with the name provided";
+    public static final String NO_THEATRES_ENOUGH_MESSAGE = "Hay muy pocas o demasiadas salas para el multiplex";
     public static final Long ADMIN_ROLE_ID = 1L;
     public static final Long OWNER_ROLE_ID = 2L;
+    public static final String MULTIPLEX_POINTS_UPDATE = "A multiplex points update usefull";
     public static final String RESPONSE_MESSAGE_KEY = "message";
     public static final String RESPONSE_ERROR_MESSAGE_KEY = "error";
     public static final String WRONG_CREDENTIALS_MESSAGE = "Wrong credential";
 
     public static final String NO_ALLOWED_USER_MESSAGE = "The user of token is no authorized";
+
+    public static final String NO_MULTIPLEX_FOUND_MESSAGE = "The Multiplex is not found";
     public static final String RESTAURANT_ALREADY_EXISTS_MESSAGE = "A restaurant already exists with the NIT number provided";
     public static final String OWNER_NO_EXISTS_MESSAGE = "Owner no exists with idPropietario";
     public static final String ROLE_NOT_ALLOWED_MESSAGE = "No permission granted to create restaurant with this role of idPropietario";
@@ -43,6 +47,7 @@ public class Constants {
     public static final String SWAGGER_LICENSE_NAME_MESSAGE = "Apache 2.0";
     public static final String SWAGGER_LICENSE_URL_MESSAGE = "http://springdoc.org";
     public static final String SWAGGER_TERMS_OF_SERVICE_MESSAGE = "http://swagger.io/terms/";
+
 
     public static final String IDUSER = "idUser";
 

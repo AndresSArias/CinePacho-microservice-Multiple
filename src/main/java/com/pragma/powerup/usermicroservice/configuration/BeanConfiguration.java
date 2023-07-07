@@ -5,6 +5,7 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.IMo
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.IMultiplexEntityMapper;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMovieRepository;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMultiplexRepository;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.ITheaterRepository;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IUserClient;
 import com.pragma.powerup.usermicroservice.domain.api.IMovieServicePort;
 import com.pragma.powerup.usermicroservice.domain.api.usecase.MovieUseCase;
@@ -29,6 +30,7 @@ public class BeanConfiguration {
     private final IMultiplexRepository multiplexRepository;
 
     private final IMultiplexEntityMapper multiplexEntityMapper;
+    private final ITheaterRepository theaterEntity;
 
 
     private  final IUserClient userClient;
@@ -36,7 +38,7 @@ public class BeanConfiguration {
 
     @Bean
     public IMultiplexPersistencePort multiplexPersistencePort () {
-        return new MultiplexMySqlAdapter(multiplexRepository, multiplexEntityMapper);
+        return new MultiplexMySqlAdapter(multiplexRepository, multiplexEntityMapper,theaterEntity);
     }
 
     @Bean
