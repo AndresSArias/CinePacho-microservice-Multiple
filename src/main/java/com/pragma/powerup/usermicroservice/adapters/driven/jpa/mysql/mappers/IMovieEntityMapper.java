@@ -5,6 +5,8 @@ import com.pragma.powerup.usermicroservice.domain.model.Movie;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
@@ -13,4 +15,5 @@ public interface IMovieEntityMapper {
     MovieEntity toEntity(Movie movie);
 
     Movie toModel(MovieEntity entity);
+List <Movie> toListModel (List<MovieEntity> movieEntities);
 }
