@@ -3,6 +3,8 @@ package com.pragma.powerup.usermicroservice.configuration;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.MovieAlreadyExistException;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.MultiplexAlredyExistException;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoDataFoundException;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoMultiplexFoundException;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoTheatresEnoughException;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.exceptions.NoAllowedUserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,9 +62,23 @@ public class ControllerAdvisor {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, MULTIPLEX_ALREADY_EXISTS_MESSAGE));
     }
+<<<<<<< HEAD
     @ExceptionHandler(MovieAlreadyExistException.class)
     public ResponseEntity<Map<String, String>> handleMovieAlredyExistException(MovieAlreadyExistException movieAlredyExistException) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, MOVIE_ALREADY_EXISTS_MESSAGE));
+=======
+
+    @ExceptionHandler(NoMultiplexFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoMultiplexFoundException(NoMultiplexFoundException noMultiplexFoundException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_MULTIPLEX_FOUND_MESSAGE));
+    }
+
+    @ExceptionHandler(NoTheatresEnoughException.class)
+    public ResponseEntity<Map<String, String>> handleNoTheatresEnoughException(NoTheatresEnoughException NoTheatresEnoughException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_THEATRES_ENOUGH_MESSAGE));
+>>>>>>> 4cd5a5a610dfc530f415eb61a4820b823f7adf51
     }
 }

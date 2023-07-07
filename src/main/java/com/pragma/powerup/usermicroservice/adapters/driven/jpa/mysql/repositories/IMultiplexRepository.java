@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface IMultiplexRepository extends JpaRepository<MultiplexEntity,Long> {
 
     Optional<MultiplexEntity> findByName(String name);
+    Optional<MultiplexEntity> findById(int idMultiplex);
+
 
 }
