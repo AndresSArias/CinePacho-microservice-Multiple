@@ -32,6 +32,7 @@ public class MultiplexRestController {
         return ResponseEntity.ok(multiplexHandler.saveMultiplex(multiplexRequestDto));
     }
 
+    @GetMapping("/all")
     @Operation(summary = "Get all the Multiplex")
     public ResponseEntity<MultiplexHCIPage> getAllMultiplexes(@PathVariable int size, @PathVariable int page) {
         return ResponseEntity.ok(multiplexHandler.getAllMultiplexes(page,size));
