@@ -1,13 +1,18 @@
 package com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.impl;
 
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.MultiplexRequestDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MultiplexHCIPage;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MultiplexResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.NewMultiplexResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.factory.mapper.request.IMultiplexRequestMapper;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.factory.mapper.response.IMultiplexResponseMapper;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IMultiplexHandler;
 import com.pragma.powerup.usermicroservice.domain.api.IMultiplexServicePort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.pragma.powerup.usermicroservice.configuration.Constants.MULTIPLEX_CREATED_MESSAGE;
 
@@ -28,4 +33,11 @@ public class MultiplexHandlerImpl implements IMultiplexHandler {
 
         return newMultiplexResponseDto;
     }
+
+    @Override
+    public MultiplexHCIPage getAllMultiplexes(int page, int size) {
+        Page<MultiplexResponseDto> multiplexResponseDto = multiplexResponseMapper.toResponsePage(multiplexServicePort.getAllMultiplexes(page, size));
+        return multiplexResponseMapper.toResponseHCIPage(multiplexResponseDto);
+    }
+
 }
