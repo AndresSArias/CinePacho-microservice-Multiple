@@ -1,6 +1,8 @@
 package com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers;
 
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.MovieEntity;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.MultiplexEntity;
+import com.pragma.powerup.usermicroservice.domain.model.Movie;
 import com.pragma.powerup.usermicroservice.domain.model.Multiplex;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -19,11 +21,5 @@ public interface IMultiplexEntityMapper {
 
     Multiplex toModel(MultiplexEntity entity);
 
-    default Page<Multiplex> toMultiplexPage(Page<MultiplexEntity> entityPage) {
-        List<Multiplex> dtoList = entityPage.getContent().stream()
-                .map(this::toModel)
-                .collect(Collectors.toList());
-
-        return new PageImpl<>(dtoList, entityPage.getPageable(), entityPage.getTotalElements());
-    }
+    List <Multiplex> toListModel (List<MultiplexEntity> multiplexEntities);
 }

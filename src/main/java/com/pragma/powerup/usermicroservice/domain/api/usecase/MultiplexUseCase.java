@@ -4,6 +4,7 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.Mult
 import com.pragma.powerup.usermicroservice.domain.api.IMultiplexServicePort;
 import com.pragma.powerup.usermicroservice.domain.exceptions.LenghtPageException;
 import com.pragma.powerup.usermicroservice.domain.exceptions.LenghtSizeException;
+import com.pragma.powerup.usermicroservice.domain.model.Movie;
 import com.pragma.powerup.usermicroservice.domain.model.Multiplex;
 import com.pragma.powerup.usermicroservice.domain.spi.IMultiplexPersistencePort;
 import org.springframework.data.domain.Page;
@@ -30,16 +31,7 @@ public class MultiplexUseCase implements IMultiplexServicePort {
         return multiplexPersistencePort.saveMultiplex(multiplex);
     }
 
-    @Override
-    public Page<Multiplex> getAllMultiplexes(int page, int size) {
-        if (size < 1){
-            throw  new LenghtSizeException();
-        }
-        if (page < 0){
-            throw  new LenghtPageException();
-        }
-
-        final Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "nombre"));
-        return multiplexPersistencePort.getAllMultiplexes(pageable);
+    public List<Multiplex> getAllMultiplex() {
+        return multiplexPersistencePort.getAllMultiplex();
     }
 }

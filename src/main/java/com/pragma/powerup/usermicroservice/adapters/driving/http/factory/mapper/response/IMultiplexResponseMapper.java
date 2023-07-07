@@ -1,9 +1,9 @@
 package com.pragma.powerup.usermicroservice.adapters.driving.http.factory.mapper.response;
 
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.MultiplexEntity;
-import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MultiplexHCIPage;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MovieResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MultiplexResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.NewMultiplexResponseDto;
+import com.pragma.powerup.usermicroservice.domain.model.Movie;
 import com.pragma.powerup.usermicroservice.domain.model.Multiplex;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -22,16 +22,8 @@ public interface IMultiplexResponseMapper {
     NewMultiplexResponseDto toDto (Multiplex multiplex);
     MultiplexResponseDto toMultiplexResponse (Multiplex multiplex);
 
-    default Page<MultiplexResponseDto> toResponsePage(Page<Multiplex> entityPage) {
-        List<MultiplexResponseDto> dtoList = entityPage.getContent().stream()
-                .map(this::toMultiplexResponse)
-                .collect(Collectors.toList());
+    List<MultiplexResponseDto> toListDto (List<Multiplex> multiplex);
 
-        return new PageImpl<>(dtoList, entityPage.getPageable(), entityPage.getTotalElements());
-    }
-    @Mapping(target = "pageActual",source = "pageable.pageNumber")
-    @Mapping(target = "elemetosForPage",source = "pageable.pageSize")
-    MultiplexHCIPage toResponseHCIPage (Page<MultiplexResponseDto> multiplexResponseDto);
 
 
 }

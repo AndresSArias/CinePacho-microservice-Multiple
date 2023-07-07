@@ -1,12 +1,15 @@
 package com.pragma.powerup.usermicroservice.domain.api;
 
+import com.pragma.powerup.usermicroservice.domain.model.Movie;
 import com.pragma.powerup.usermicroservice.domain.model.Multiplex;
 import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 public interface IMultiplexServicePort {
 
     Multiplex saveMultiplex(Multiplex multiplex);
 
-    Page<Multiplex> getAllMultiplexes(int page, int size);
+    List<Multiplex> getAllMultiplex();
 
 }

@@ -5,12 +5,15 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoDataFoundException;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.IMultiplexEntityMapper;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMultiplexRepository;
+import com.pragma.powerup.usermicroservice.domain.model.Movie;
 import com.pragma.powerup.usermicroservice.domain.model.Multiplex;
 import com.pragma.powerup.usermicroservice.domain.spi.IMultiplexPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Transactional
@@ -29,11 +32,7 @@ public class MultiplexMySqlAdapter implements IMultiplexPersistencePort {
     }
 
     @Override
-    public Page<Multiplex> getAllMultiplexes (Pageable pageable) {
-        Page<MultiplexEntity> multiplexEntityPage = multiplexRepository.findAll(pageable);
-        if (multiplexEntityPage.isEmpty()){
-            throw new NoDataFoundException();
-        }
-        return multiplexEntityMapper.toMultiplexPage(multiplexEntityPage);
+    public List<Multiplex> getAllMultiplex() {
+        return multiplexEntityMapper.toListModel(multiplexRepository.findAll());
     }
 }

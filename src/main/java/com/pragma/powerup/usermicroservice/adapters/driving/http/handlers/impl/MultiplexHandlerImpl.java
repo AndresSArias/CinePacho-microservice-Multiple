@@ -1,7 +1,7 @@
 package com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.impl;
 
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.MultiplexRequestDto;
-import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MultiplexHCIPage;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MovieResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.MultiplexResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.NewMultiplexResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.factory.mapper.request.IMultiplexRequestMapper;
@@ -34,10 +34,8 @@ public class MultiplexHandlerImpl implements IMultiplexHandler {
         return newMultiplexResponseDto;
     }
 
-    @Override
-    public MultiplexHCIPage getAllMultiplexes(int page, int size) {
-        Page<MultiplexResponseDto> multiplexResponseDto = multiplexResponseMapper.toResponsePage(multiplexServicePort.getAllMultiplexes(page, size));
-        return multiplexResponseMapper.toResponseHCIPage(multiplexResponseDto);
+    public List<MultiplexResponseDto> getAllMultiplex() {
+        return multiplexResponseMapper.toListDto(multiplexServicePort.getAllMultiplex());
     }
 
 }
