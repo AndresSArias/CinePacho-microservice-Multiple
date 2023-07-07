@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface IMoviePersistencePort {
     List<Movie> getAllMovies ();
+    Movie saveMovie(Movie movie);
 
 
 }

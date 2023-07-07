@@ -50,6 +50,7 @@ public class MainSecurity {
                         .requestMatchers("/restaurant/getRestaurants","/order/makeOrder").hasRole("CUSTOMER")
                         .requestMatchers("/restaurant/createRestaurant").hasRole("ADMIN")
                         .requestMatchers("/multiplex/new").hasRole("DIRECTOR")
+                        .requestMatchers("/movie/new").hasRole("DIRECTOR")
                         .anyRequest().authenticated()
                 )
                 .formLogin().disable()

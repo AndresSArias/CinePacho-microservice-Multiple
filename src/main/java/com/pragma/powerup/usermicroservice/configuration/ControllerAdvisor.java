@@ -1,5 +1,6 @@
 package com.pragma.powerup.usermicroservice.configuration;
 
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.MovieAlreadyExistException;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.MultiplexAlredyExistException;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoDataFoundException;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.exceptions.NoAllowedUserException;
@@ -58,5 +59,10 @@ public class ControllerAdvisor {
     public ResponseEntity<Map<String, String>> handleMultiplexAlredyExistException(MultiplexAlredyExistException multiplexAlredyExistException) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, MULTIPLEX_ALREADY_EXISTS_MESSAGE));
+    }
+    @ExceptionHandler(MovieAlreadyExistException.class)
+    public ResponseEntity<Map<String, String>> handleMovieAlredyExistException(MovieAlreadyExistException movieAlredyExistException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, MOVIE_ALREADY_EXISTS_MESSAGE));
     }
 }
