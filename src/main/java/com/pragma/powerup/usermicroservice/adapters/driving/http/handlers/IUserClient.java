@@ -18,7 +18,7 @@ import java.util.Map;
 )
 public interface IUserClient {
 
-    @GetExchange("user/getUser/{numberDocument}")
+    @GetExchange("users/getUser/{numberDocument}")
     ResponseEntity<AuthUserResponse> getUserByDocument(@PathVariable String numberDocument, @RequestHeader Map<String, String> headers);
 
 

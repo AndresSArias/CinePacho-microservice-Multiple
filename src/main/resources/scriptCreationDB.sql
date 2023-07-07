@@ -172,11 +172,19 @@ ALTER TABLE multiplexs
 ;
 
 ALTER TABLE multiplexs 
+ ADD CONSTRAINT CK_NUM_SALA CHECK (num_sala  > 0)
+;
+
+ALTER TABLE multiplexs 
  ADD CONSTRAINT CK_TIKECT CHECK (point_ticket > 0)
 ;
 
 ALTER TABLE multiplexs 
  ADD CONSTRAINT CK_SNACK CHECK (point_snack > 0)
+;
+
+ALTER TABLE multiplexs 
+ ADD CONSTRAINT CK_NAME CHECK (name in ('TITAN','UNICENTRO','PLAZA CENTRAL','GRAN ESTACION','EMBAJADOR','LAS AMERICAS'))
 ;
 
 ALTER TABLE show_invoice 
@@ -256,3 +264,4 @@ ALTER TABLE theaters
 
 SET FOREIGN_KEY_CHECKS=1
 ; 
+
