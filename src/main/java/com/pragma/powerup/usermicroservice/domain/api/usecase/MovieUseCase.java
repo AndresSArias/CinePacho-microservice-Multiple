@@ -15,6 +15,10 @@ public class MovieUseCase implements IMovieServicePort{
     }
 
     @Override
+    public Movie saveMovie(Movie movie){
+        return moviePersistencePort.saveMovie(movie);
+    }
+    @Override
     public List<Movie> getAllMovies() {
         return moviePersistencePort.getAllMovies();
     }

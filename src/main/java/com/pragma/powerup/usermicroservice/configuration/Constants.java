@@ -6,6 +6,7 @@ public class Constants {
         throw new IllegalStateException("Utility class");
     }
 
+    public static final String MOVIE_CREATE_MESSAGE = "Movie created succesfully";
     public static final String MULTIPLEX_CREATED_MESSAGE = "Multiplex created succesfully";
     public static final String MULTIPLEX_ALREADY_EXISTS_MESSAGE = "A multiplex already exists with the name provided";
     public static final Long ADMIN_ROLE_ID = 1L;
