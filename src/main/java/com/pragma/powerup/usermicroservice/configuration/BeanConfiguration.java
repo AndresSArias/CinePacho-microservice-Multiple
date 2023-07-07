@@ -7,11 +7,8 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.IMu
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.ISnackEntityMapper;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMovieRepository;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMultiplexRepository;
-<<<<<<< HEAD
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.ISnackRepository;
-=======
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.ITheaterRepository;
->>>>>>> 4cd5a5a610dfc530f415eb61a4820b823f7adf51
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IUserClient;
 import com.pragma.powerup.usermicroservice.domain.api.IMovieServicePort;
 import com.pragma.powerup.usermicroservice.domain.api.ISnackServicePort;
