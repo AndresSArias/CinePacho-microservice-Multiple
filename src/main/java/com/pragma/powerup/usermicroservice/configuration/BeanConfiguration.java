@@ -1,18 +1,18 @@
 package com.pragma.powerup.usermicroservice.configuration;
 
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.adapter.MovieMysqlAdapter;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.adapter.ShowMySqlAdapter;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.adapter.SnackMysqlAdapter;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.IMovieEntityMapper;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.IMultiplexEntityMapper;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.mappers.ISnackEntityMapper;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMovieRepository;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMultiplexRepository;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.ISnackRepository;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.ITheaterRepository;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.*;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IUserClient;
 import com.pragma.powerup.usermicroservice.domain.api.IMovieServicePort;
+import com.pragma.powerup.usermicroservice.domain.api.IShowServicePort;
 import com.pragma.powerup.usermicroservice.domain.api.ISnackServicePort;
 import com.pragma.powerup.usermicroservice.domain.api.usecase.MovieUseCase;
+import com.pragma.powerup.usermicroservice.domain.api.usecase.ShowUseCase;
 import com.pragma.powerup.usermicroservice.domain.api.usecase.SnackUseCase;
 import com.pragma.powerup.usermicroservice.domain.spi.IMoviePersistencePort;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.adapter.MultiplexMySqlAdapter;
@@ -20,6 +20,7 @@ import com.pragma.powerup.usermicroservice.domain.api.IMultiplexServicePort;
 import com.pragma.powerup.usermicroservice.domain.api.usecase.MultiplexUseCase;
 import com.pragma.powerup.usermicroservice.domain.spi.IMultiplexPersistencePort;
 
+import com.pragma.powerup.usermicroservice.domain.spi.IShowPersistencePort;
 import com.pragma.powerup.usermicroservice.domain.spi.ISnackPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +40,10 @@ public class BeanConfiguration {
     private final IMultiplexRepository multiplexRepository;
 
     private final IMultiplexEntityMapper multiplexEntityMapper;
-    private final ITheaterRepository theaterEntity;
+
+    private final ITheaterRepository theaterRepository;
+
+    private final IMovieTheaterRepository showRepository;
 
 
     private  final IUserClient userClient;
@@ -47,7 +51,7 @@ public class BeanConfiguration {
 
     @Bean
     public IMultiplexPersistencePort multiplexPersistencePort () {
-        return new MultiplexMySqlAdapter(multiplexRepository, multiplexEntityMapper,theaterEntity);
+        return new MultiplexMySqlAdapter(multiplexRepository, multiplexEntityMapper, theaterRepository);
     }
 
     @Bean
@@ -72,5 +76,12 @@ public class BeanConfiguration {
         return new SnackUseCase(snackPersistencePort());
     }
 
-
+    @Bean
+    public IShowPersistencePort showPersistencePort(){
+        return new ShowMySqlAdapter(showRepository,movieRepository);
+    }
+    @Bean
+    public IShowServicePort showServicePort(){
+        return new ShowUseCase(showPersistencePort());
+    }
 }

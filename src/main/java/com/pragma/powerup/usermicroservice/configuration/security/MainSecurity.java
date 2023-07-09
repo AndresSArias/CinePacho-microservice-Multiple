@@ -46,11 +46,10 @@ public class MainSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests(requests -> requests
-                        .requestMatchers("/movies/all","/auth/refresh","/category/getAll","/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/health").permitAll()
+                        .requestMatchers("/movies/all","/auth/refresh","/category/getAll","/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/health","/show/**").permitAll()
                         .requestMatchers("/restaurant/getRestaurants","/order/makeOrder").hasRole("CUSTOMER")
                         .requestMatchers("/restaurant/createRestaurant").hasRole("ADMIN")
-                        .requestMatchers("/multiplex/new").hasRole("DIRECTOR")
-                        .requestMatchers("/movie/new").hasRole("DIRECTOR")
+                        .requestMatchers("/movie/new","/multiplex/new").hasRole("DIRECTOR")
                         .anyRequest().authenticated()
                 )
                 .formLogin().disable()
