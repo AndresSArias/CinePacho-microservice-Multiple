@@ -18,8 +18,10 @@ public class Constants {
     public static final String WRONG_CREDENTIALS_MESSAGE = "Wrong credential";
 
     public static final String NO_ALLOWED_USER_MESSAGE = "The user of token is no authorized";
-
     public static final String NO_MULTIPLEX_FOUND_MESSAGE = "The Multiplex is not found";
+    public static final String NO_MOVIE_FOUND_MESSAGE = "The Movie is not found";
+    public static final String NO_SHOW_FOUND_MESSAGE = "The Show for the idMovie and idMultiplex is not found";
+
     public static final String RESTAURANT_ALREADY_EXISTS_MESSAGE = "A restaurant already exists with the NIT number provided";
     public static final String OWNER_NO_EXISTS_MESSAGE = "Owner no exists with idPropietario";
     public static final String ROLE_NOT_ALLOWED_MESSAGE = "No permission granted to create restaurant with this role of idPropietario";

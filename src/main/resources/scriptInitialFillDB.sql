@@ -79,6 +79,9 @@ INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule)
 VALUES (2,2,2,'2023-07-14','14:00:00');
 INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule) 
 VALUES (3,6,3,'2023-07-14','18:00:00');
+INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule) 
+VALUES (4,6,3,'2023-07-14','12:00:00');
+
 
 /*Insercón de snacks*/
 INSERT INTO snacks (id,name,price,url)

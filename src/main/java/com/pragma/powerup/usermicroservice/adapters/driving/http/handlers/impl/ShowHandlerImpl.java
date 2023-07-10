@@ -1,5 +1,6 @@
 package com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.impl;
 
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAliveResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowScheduleResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IShowHandler;
 import com.pragma.powerup.usermicroservice.domain.api.IShowServicePort;
@@ -16,5 +17,10 @@ public class ShowHandlerImpl implements IShowHandler {
     @Override
     public List<ShowScheduleResponseDto> getAllSchedule() {
         return showServicePort.getAllShowSchedule();
+    }
+
+    @Override
+    public List<ShowAliveResponseDto> getShowsByMovieAndMultiplex(String idMovie, String idMultiplex) {
+        return showServicePort.getShowsByMovieAndMultiplex(idMovie, idMultiplex);
     }
 }

@@ -78,7 +78,7 @@ public class BeanConfiguration {
 
     @Bean
     public IShowPersistencePort showPersistencePort(){
-        return new ShowMySqlAdapter(showRepository,movieRepository);
+        return new ShowMySqlAdapter(showRepository,movieRepository,multiplexRepository,theaterRepository);
     }
     @Bean
     public IShowServicePort showServicePort(){

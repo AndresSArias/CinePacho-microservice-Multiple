@@ -1,10 +1,6 @@
 package com.pragma.powerup.usermicroservice.configuration;
 
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.MovieAlreadyExistException;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.MultiplexAlredyExistException;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoDataFoundException;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoMultiplexFoundException;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoTheatresEnoughException;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.*;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.exceptions.NoAllowedUserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -84,4 +80,15 @@ public class ControllerAdvisor {
 
     }
 
+    @ExceptionHandler(NoMovieFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoMovieFoundException (NoMovieFoundException noMovieFoundException){
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_MOVIE_FOUND_MESSAGE));
+    }
+
+    @ExceptionHandler(NoShowFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoShowFoundException (NoShowFoundException noShowFoundException){
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_SHOW_FOUND_MESSAGE));
+    }
 }
