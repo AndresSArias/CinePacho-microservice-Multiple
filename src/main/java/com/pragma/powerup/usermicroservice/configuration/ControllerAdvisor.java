@@ -82,13 +82,24 @@ public class ControllerAdvisor {
 
     @ExceptionHandler(NoMovieFoundException.class)
     public ResponseEntity<Map<String, String>> handleNoMovieFoundException (NoMovieFoundException noMovieFoundException){
-        return ResponseEntity.status(HttpStatus.CONFLICT)
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_MOVIE_FOUND_MESSAGE));
     }
 
     @ExceptionHandler(NoShowFoundException.class)
     public ResponseEntity<Map<String, String>> handleNoShowFoundException (NoShowFoundException noShowFoundException){
-        return ResponseEntity.status(HttpStatus.CONFLICT)
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_SHOW_FOUND_MESSAGE));
     }
+    @ExceptionHandler(NoTheatreFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoTheatreFoundException (NoTheatreFoundException noTheatreFoundException){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_THEATER_FOUND_MESSAGE));
+    }
+    @ExceptionHandler(NoCreateShowException.class)
+    public ResponseEntity<Map<String, String>> handleNoCreateShowException(NoCreateShowException noCreateShowException){
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_CREATE_SHOW_MESSAGE));
+    }
+
 }

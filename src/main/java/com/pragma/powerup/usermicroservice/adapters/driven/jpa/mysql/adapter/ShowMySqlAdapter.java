@@ -4,14 +4,13 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.Movi
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.MovieTheaterEntity;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.MultiplexEntity;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.entity.TheaterEntity;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoDataFoundException;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoMovieFoundException;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoMultiplexFoundException;
-import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.NoShowFoundException;
+import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.exceptions.*;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMovieRepository;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMovieTheaterRepository;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMultiplexRepository;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.ITheaterRepository;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.ScheduleRequestDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ScheduleCreateResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAliveResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowScheduleResponseDto;
 import com.pragma.powerup.usermicroservice.domain.api.IShowServicePort;
@@ -19,6 +18,8 @@ import com.pragma.powerup.usermicroservice.domain.spi.IShowPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -70,26 +71,7 @@ public class ShowMySqlAdapter implements IShowPersistencePort {
         if (showAllowedList.isEmpty()){
             throw new NoShowFoundException();
         }
-        /*
-        List<ShowAliveResponseDto> showAlive= new ArrayList<>();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
-        showAlive.add(new ShowAliveResponseDto(
-                showAllowedList.get(0).getTheaterId().getId()+"",
-                showAllowedList.get(0).getSchedule().format(formato)
-        ));
 
-        for (int i = 1; i < showAllowedList.size(); i++){
-            for(int j = i; j <showAllowedList.size();j++){
-                if(showAlive.get(i-1).getIdTheater().equals(showAllowedList.get(j).getTheaterId().getId()+"")){
-                    showAlive.get(i-1).setHours(showAlive.get(i-1).getHours()+","+showAllowedList.get(j).getSchedule().format(formato));
-                }
-            }
-            showAlive.add(new ShowAliveResponseDto(
-                    showAllowedList.get(i).getTheaterId().getId()+"",
-                    showAllowedList.get(i).getSchedule().format(formato)
-            ));
-        }
-*/
         List<ShowAliveResponseDto> showAlive = new ArrayList<>();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -112,5 +94,42 @@ public class ShowMySqlAdapter implements IShowPersistencePort {
         }
 
         return showAlive;
+    }
+
+    @Override
+    public ScheduleCreateResponseDto saveSchedule(ScheduleRequestDto scheduleRequestDto) {
+        Optional<MovieEntity> movie = movieRepository.findByTitle(scheduleRequestDto.getMovieName());
+        if (!movie.isPresent()){
+            throw new NoMovieFoundException();
+        }
+        Optional<TheaterEntity> theaterEntity = theaterRepository.findById(Long.parseLong(scheduleRequestDto.getIdTheater()));
+        if (!theaterEntity.isPresent()){
+            throw new NoTheatreFoundException();
+        }
+
+        MovieTheaterEntity newShow = new MovieTheaterEntity();
+
+        newShow.setTheaterId(theaterEntity.get());
+        newShow.setMovieId(movie.get());
+        newShow.setDay(LocalDate.parse(scheduleRequestDto.getDay(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        newShow.setSchedule(LocalTime.parse(scheduleRequestDto.getSchedule(), DateTimeFormatter.ofPattern("HH:mm:ss")));
+        newShow.setChairGeneral("0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
+        newShow.setChairPreferential("0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0");
+
+        List<MovieTheaterEntity> oldShows = movieTheaterRepository.findAllByTheaterId(theaterEntity.get());
+        MovieTheaterEntity savedShow;
+        if (oldShows.isEmpty()){
+            savedShow = movieTheaterRepository.save(newShow);
+        }else{
+            for(MovieTheaterEntity oldShow : oldShows){
+                if (newShow.getDay().equals(oldShow.getDay())&& newShow.getSchedule().equals(oldShow.getSchedule())){
+                    throw new NoCreateShowException();
+                }
+            }
+            savedShow = movieTheaterRepository.save(newShow);
+        }
+
+        ScheduleCreateResponseDto showCreated = new ScheduleCreateResponseDto(savedShow.getId()+"","Se creó la función correctamente");
+        return showCreated;
     }
 }

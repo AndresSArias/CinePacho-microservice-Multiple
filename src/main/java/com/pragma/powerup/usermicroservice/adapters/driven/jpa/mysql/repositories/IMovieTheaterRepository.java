@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IMovieTheaterRepository extends JpaRepository<MovieTheaterEntity, Long> {
-    List<MovieTheaterEntity> findByTheaterIdAndMovieId (TheaterEntity theaterEntity, MovieEntity movieEntity);
+    List<MovieTheaterEntity> findAllByTheaterId (TheaterEntity theaterEntity);
 
     @Query("SELECT mt " +
             "FROM MovieTheaterEntity mt " +
@@ -23,4 +23,6 @@ public interface IMovieTheaterRepository extends JpaRepository<MovieTheaterEntit
             "AND mp.id = :multiplexId " +
             "ORDER BY mt.schedule")
     List<MovieTheaterEntity> findByMovieAndMultiplex(@Param("movieId") Long movieId, @Param("multiplexId") Long multiplexId);
+
+
 }

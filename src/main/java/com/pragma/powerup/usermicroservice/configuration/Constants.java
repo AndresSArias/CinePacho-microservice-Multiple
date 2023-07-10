@@ -21,6 +21,8 @@ public class Constants {
     public static final String NO_MULTIPLEX_FOUND_MESSAGE = "The Multiplex is not found";
     public static final String NO_MOVIE_FOUND_MESSAGE = "The Movie is not found";
     public static final String NO_SHOW_FOUND_MESSAGE = "The Show for the idMovie and idMultiplex is not found";
+    public static final String NO_THEATER_FOUND_MESSAGE = "The theater is not found with idTheater provided";
+    public static final String NO_CREATE_SHOW_MESSAGE = "A Show already exists with the day and schedule provided";
 
     public static final String RESTAURANT_ALREADY_EXISTS_MESSAGE = "A restaurant already exists with the NIT number provided";
     public static final String OWNER_NO_EXISTS_MESSAGE = "Owner no exists with idPropietario";
