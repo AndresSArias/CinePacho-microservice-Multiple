@@ -73,14 +73,14 @@ INSERT INTO movies (id,title,duration,year_allowed,synopsis,url)
 VALUES (3,'Rapidos y furiosos 10','02:21:00',13,'La de la familia','https://mx.web.img3.acsta.net/c_310_420/pictures/23/04/20/02/29/5514328.jpg');
 
 /*Inserción de funciones*/
-INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule) 
-VALUES (1,1,1,'2023-07-14','14:00:00');
-INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule) 
-VALUES (2,2,2,'2023-07-14','14:00:00');
-INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule) 
-VALUES (3,6,3,'2023-07-14','18:00:00');
-INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule) 
-VALUES (4,6,3,'2023-07-14','12:00:00');
+INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule,chair_general,chair_preferential) 
+VALUES (1,1,1,'2023-07-14','14:00:00','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0');
+INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule,chair_general,chair_preferential) 
+VALUES (2,2,2,'2023-07-14','14:00:00','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0');
+INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule,chair_general,chair_preferential) 
+VALUES (3,6,3,'2023-07-14','18:00:00','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0');
+INSERT INTO movie_theater (id,id_theater,id_movie,day,schedule,chair_general,chair_preferential) 
+VALUES (4,6,3,'2023-07-14','12:00:00','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0','0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0');
 
 
 /*Insercón de snacks*/
@@ -103,17 +103,18 @@ VALUES (8,'Gaseosa',5000,'https://picsum.photos/300');
 
 /*Inserción de una factura*/
 INSERT INTO invoices (id,id_client,rating_movie,date,net_value,state)
-VALUES (1,1,null,'2023-07-03',null,'EN PROCESO');
+VALUES (1,'444',null,'2023-07-03',null,'EN PROCESO');
 
 INSERT INTO invoices (id,id_client,rating_movie,date,net_value,state)
-VALUES (2,2,4,'2023-07-04',33000,'PAGADO');
+VALUES (2,'1234',4,'2023-07-04',33000,'PAGADO');
 
 INSERT INTO invoices (id,id_client,rating_movie,date,net_value,state)
-VALUES (3,2,null,'2023-07-05',null,'EN PROCESO');
+VALUES (3,'1234',null,'2023-07-05',null,'EN PROCESO');
 
 /*Inserción de los snacks en la factura*/
 INSERT INTO snack_invoice (id,id_snack,id_invoice,quantity,value,state)
 VALUES (1,1,1,1,5000,'EN PROCESO');
+
 INSERT INTO snack_invoice (id,id_snack,id_invoice,quantity,value,state)
 VALUES (2,5,1,2,20000,'EN PROCESO');
 INSERT INTO snack_invoice (id,id_snack,id_invoice,quantity,value,state)

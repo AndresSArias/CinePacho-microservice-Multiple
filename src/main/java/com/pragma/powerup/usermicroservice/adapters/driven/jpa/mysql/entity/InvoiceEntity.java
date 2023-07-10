@@ -19,8 +19,8 @@ public class InvoiceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long idClient;
+    @Column(nullable = false, length = 20)
+    private String idClient;
 
     @Column(nullable = true)
     private Double ratingMovie;

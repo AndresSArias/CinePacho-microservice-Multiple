@@ -45,7 +45,7 @@ DROP TABLE IF EXISTS theaters CASCADE
 CREATE TABLE invoices
 (
 	id BIGINT NOT NULL AUTO_INCREMENT,
-	id_client BIGINT NOT NULL COMMENT 'Identificador de la factura',
+	id_client VARCHAR(20) NOT NULL COMMENT 'Identificador de la factura',
 	rating_movie DOUBLE(3,2) NULL COMMENT 'Calificación de pelicula',
 	date DATE NOT NULL,
 	net_value INT NULL,
@@ -63,8 +63,8 @@ CREATE TABLE movie_theater
 	id_movie BIGINT NOT NULL COMMENT 'Id de la pelicula involucrada.',
 	day DATE NOT NULL COMMENT 'Id Sala',
 	schedule TIME NOT NULL,
-	chair_general VARCHAR(79) NOT NULL DEFAULT '0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0',
-	chair_preferential VARCHAR(39) NOT NULL DEFAULT '0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0',
+	chair_general VARCHAR(79) NOT NULL,
+	chair_preferential VARCHAR(39) NOT NULL,
 	CONSTRAINT PK_PELICULA_SALA PRIMARY KEY (id ASC)
 )
 COMMENT = 'Tabla que contiene las relación entre pelicula y una sala.'
@@ -100,7 +100,7 @@ COMMENT = 'Tabla por la cual contiene los multiplex de Cine Pacho.'
 
 CREATE TABLE show_invoice
 (
-	id BIGINT NOT NULL,
+	id BIGINT NOT NULL AUTO_INCREMENT,
 	id_show BIGINT NOT NULL,
 	id_invoice BIGINT NOT NULL,
 	quantity_chair_general VARCHAR(255) NOT NULL,

@@ -1,7 +1,7 @@
 package com.pragma.powerup.usermicroservice.adapters.driving.http.endpoints.controller;
 
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.ScheduleRequestDto;
-import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ScheduleCreateResponseDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ObjectCreateResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAliveResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowScheduleResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IShowHandler;
@@ -36,7 +36,7 @@ public class ShowRestController {
 
     @Operation(summary = "Add a new schedule by Admin multiplex")
     @PostMapping("/schedules/new")
-    public ResponseEntity<ScheduleCreateResponseDto> saveSchedule(@Valid @RequestBody ScheduleRequestDto scheduleRequestDto) {
+    public ResponseEntity<ObjectCreateResponseDto> saveSchedule(@Valid @RequestBody ScheduleRequestDto scheduleRequestDto) {
 
         return ResponseEntity.ok(showHandler.saveSchedule(scheduleRequestDto));
     }

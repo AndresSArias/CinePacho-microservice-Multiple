@@ -10,10 +10,9 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositorie
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.IMultiplexRepository;
 import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositories.ITheaterRepository;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.ScheduleRequestDto;
-import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ScheduleCreateResponseDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ObjectCreateResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAliveResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowScheduleResponseDto;
-import com.pragma.powerup.usermicroservice.domain.api.IShowServicePort;
 import com.pragma.powerup.usermicroservice.domain.spi.IShowPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -97,7 +96,7 @@ public class ShowMySqlAdapter implements IShowPersistencePort {
     }
 
     @Override
-    public ScheduleCreateResponseDto saveSchedule(ScheduleRequestDto scheduleRequestDto) {
+    public ObjectCreateResponseDto saveSchedule(ScheduleRequestDto scheduleRequestDto) {
         Optional<MovieEntity> movie = movieRepository.findByTitle(scheduleRequestDto.getMovieName());
         if (!movie.isPresent()){
             throw new NoMovieFoundException();
@@ -129,7 +128,7 @@ public class ShowMySqlAdapter implements IShowPersistencePort {
             savedShow = movieTheaterRepository.save(newShow);
         }
 
-        ScheduleCreateResponseDto showCreated = new ScheduleCreateResponseDto(savedShow.getId()+"","Se creó la función correctamente");
+        ObjectCreateResponseDto showCreated = new ObjectCreateResponseDto(savedShow.getId()+"","Se creó la función correctamente");
         return showCreated;
     }
 }

@@ -7,7 +7,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ScheduleCreateResponseDto {
-    private String idShow;
+public class ObjectCreateResponseDto {
+    private String idCreated;
     private String message;
 }

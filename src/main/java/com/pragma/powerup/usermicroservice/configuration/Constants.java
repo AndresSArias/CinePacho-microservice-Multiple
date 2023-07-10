@@ -23,10 +23,10 @@ public class Constants {
     public static final String NO_SHOW_FOUND_MESSAGE = "The Show for the idMovie and idMultiplex is not found";
     public static final String NO_THEATER_FOUND_MESSAGE = "The theater is not found with idTheater provided";
     public static final String NO_CREATE_SHOW_MESSAGE = "A Show already exists with the day and schedule provided";
-
-    public static final String RESTAURANT_ALREADY_EXISTS_MESSAGE = "A restaurant already exists with the NIT number provided";
-    public static final String OWNER_NO_EXISTS_MESSAGE = "Owner no exists with idPropietario";
-    public static final String ROLE_NOT_ALLOWED_MESSAGE = "No permission granted to create restaurant with this role of idPropietario";
+    public static final String NO_SHOW_EXIST_MESSAGE = "The show no exist with scheduler provided";
+    public static final String SELECT_CHAIR_RESERVED_MESSAGE = "A chair select for show alrady stay reserved";
+    public static final String STATE_PROGRESS = "EN PROCESO";
+    public static final String STATE_COMPLETE = "PAGADO";
     public static final String PHONE_LENGHT_MESSAGE = "The lenght of Phone is over 13";
     public static final String NAME_RESTAURANT_EXCEPTION = "The name of restaurant cant be only numbers";
     public static final String NO_DATA_FOUND_MESSAGE = "No data found for the requested petition";

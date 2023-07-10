@@ -101,5 +101,16 @@ public class ControllerAdvisor {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_CREATE_SHOW_MESSAGE));
     }
+    @ExceptionHandler(NoShowExistException.class)
+    public ResponseEntity<Map<String, String>> handleNoShowExistException (NoShowExistException noShowExistException){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_SHOW_EXIST_MESSAGE));
+    }
+    @ExceptionHandler(SelectChairReservedException.class)
+    public ResponseEntity<Map<String, String>> handleSelectChairReservedException(SelectChairReservedException selectChairReservedException){
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, SELECT_CHAIR_RESERVED_MESSAGE));
+    }
+
 
 }

@@ -25,4 +25,13 @@ public interface IMovieTheaterRepository extends JpaRepository<MovieTheaterEntit
     List<MovieTheaterEntity> findByMovieAndMultiplex(@Param("movieId") Long movieId, @Param("multiplexId") Long multiplexId);
 
 
+    @Query("SELECT mt " +
+            "FROM MovieTheaterEntity mt " +
+            "INNER JOIN MovieEntity m ON mt.movieId = m.id " +
+            "INNER JOIN TheaterEntity t ON mt.theaterId = t.id " +
+            "WHERE m.id = :movieId " +
+            "AND t.id = :theaterId ")
+    List<MovieTheaterEntity> findByMovieAndTheater(@Param("movieId") Long movieId, @Param("theaterId") Long theaterId);
+
+
 }

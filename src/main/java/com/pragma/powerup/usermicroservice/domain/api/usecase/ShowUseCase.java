@@ -1,7 +1,7 @@
 package com.pragma.powerup.usermicroservice.domain.api.usecase;
 
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.ScheduleRequestDto;
-import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ScheduleCreateResponseDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ObjectCreateResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAliveResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowScheduleResponseDto;
 import com.pragma.powerup.usermicroservice.domain.api.IShowServicePort;
@@ -27,7 +27,7 @@ public class ShowUseCase implements IShowServicePort {
     }
 
     @Override
-    public ScheduleCreateResponseDto saveSchedule(ScheduleRequestDto scheduleRequestDto) {
+    public ObjectCreateResponseDto saveSchedule(ScheduleRequestDto scheduleRequestDto) {
         return showPersistencePort.saveSchedule (scheduleRequestDto);
     }
 }
