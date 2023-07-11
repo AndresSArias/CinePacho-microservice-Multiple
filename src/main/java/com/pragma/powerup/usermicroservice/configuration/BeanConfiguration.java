@@ -88,7 +88,7 @@ public class BeanConfiguration {
 
     @Bean
     public IStatisticPersistencePort statisticPersistencePort () {
-        return new StatisticMySqlAdapter(showInvoiceRepository,multiplexRepository);
+        return new StatisticMySqlAdapter(showInvoiceRepository,multiplexRepository,invoiceRepository,movieRepository);
     }
 
     @Bean IStatisticServicePort statisticServicePort () {

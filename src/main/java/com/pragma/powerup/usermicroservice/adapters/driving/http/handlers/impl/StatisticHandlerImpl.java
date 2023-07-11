@@ -1,5 +1,6 @@
 package com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.impl;
 
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.StatisticRaitingResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.StatisticSaleResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IStatisticHandler;
 import com.pragma.powerup.usermicroservice.domain.api.IStatisticServicePort;
@@ -14,5 +15,10 @@ public class StatisticHandlerImpl implements IStatisticHandler {
     @Override
     public List<StatisticSaleResponseDto> getStatisticSales() {
         return statisticServicePort.getStatisticSales();
+    }
+
+    @Override
+    public List<StatisticRaitingResponseDto> getStatisticRainting() {
+        return statisticServicePort.getStatisticRainting();
     }
 }

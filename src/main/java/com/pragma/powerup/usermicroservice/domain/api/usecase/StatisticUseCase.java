@@ -1,5 +1,6 @@
 package com.pragma.powerup.usermicroservice.domain.api.usecase;
 
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.StatisticRaitingResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.StatisticSaleResponseDto;
 import com.pragma.powerup.usermicroservice.domain.api.IStatisticServicePort;
 import com.pragma.powerup.usermicroservice.domain.spi.IStatisticPersistencePort;
@@ -17,5 +18,10 @@ public class StatisticUseCase implements IStatisticServicePort {
     @Override
     public List<StatisticSaleResponseDto> getStatisticSales() {
         return statisticPersistnecePort.getStatisticSales();
+    }
+
+    @Override
+    public List<StatisticRaitingResponseDto> getStatisticRainting() {
+        return statisticPersistnecePort.getStatisticRainting();
     }
 }
