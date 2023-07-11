@@ -3,6 +3,7 @@ package com.pragma.powerup.usermicroservice.adapters.driving.http.endpoints.cont
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.ScheduleRequestDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ObjectCreateResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAliveResponseDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAvailableChairResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowScheduleResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IShowHandler;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,4 +41,11 @@ public class ShowRestController {
 
         return ResponseEntity.ok(showHandler.saveSchedule(scheduleRequestDto));
     }
+
+    @Operation(summary = "Get available show chairs bye idMovie, idMultiplex and schedule")
+    @GetMapping("/chairs/{idMovie}/{idMultiplex}/{day}/{schedule}")
+    public ResponseEntity<ShowAvailableChairResponseDto> getAvailableChair(@PathVariable("idMovie") String idMovie, @PathVariable("idMultiplex") String idMultiplex,@PathVariable("day") String day,@PathVariable("schedule")String schedule) {
+        return ResponseEntity.ok(showHandler.getAvailableChair(idMovie,idMultiplex, day,schedule));
+    }
+
 }

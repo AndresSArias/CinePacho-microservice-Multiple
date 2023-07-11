@@ -12,6 +12,7 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositorie
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.ScheduleRequestDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ObjectCreateResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAliveResponseDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowAvailableChairResponseDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ShowScheduleResponseDto;
 import com.pragma.powerup.usermicroservice.domain.spi.IShowPersistencePort;
 import lombok.RequiredArgsConstructor;
@@ -121,7 +122,7 @@ public class ShowMySqlAdapter implements IShowPersistencePort {
             savedShow = movieTheaterRepository.save(newShow);
         }else{
             for(MovieTheaterEntity oldShow : oldShows){
-                if (newShow.getDay().equals(oldShow.getDay())&& newShow.getSchedule().equals(oldShow.getSchedule())){
+                if (newShow.getDay().equals(oldShow.getDay()) && newShow.getSchedule().equals(oldShow.getSchedule())){
                     throw new NoCreateShowException();
                 }
             }
@@ -130,5 +131,47 @@ public class ShowMySqlAdapter implements IShowPersistencePort {
 
         ObjectCreateResponseDto showCreated = new ObjectCreateResponseDto(savedShow.getId()+"","Se creó la función correctamente");
         return showCreated;
+    }
+
+    @Override
+    public ShowAvailableChairResponseDto getAvailableChair(String idMovie, String idMultiplex, String day,String schedule) {
+
+        Optional<MultiplexEntity> multiplexTarget = multiplexRepository.findById(Long.parseLong(idMultiplex));
+        if (!multiplexTarget.isPresent()){
+            throw new NoMultiplexFoundException();
+        }
+        Optional<MovieEntity> movieTarget = movieRepository.findById(Long.parseLong(idMovie));
+
+        if(!movieTarget.isPresent()){
+            throw new NoMovieFoundException();
+        }
+
+        Optional<MovieTheaterEntity> showTarget = movieTheaterRepository.findByIdMovieAndIdMultiplexAndDayAndSchedule(movieTarget.get().getId(),multiplexTarget.get().getId(),
+                LocalDate.parse(day, DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                LocalTime.parse(schedule, DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        if (!showTarget.isPresent()){
+            throw new NoShowFoundException();
+        }
+
+        String chairGeneralNoAvailable = getChairNoAvailable(showTarget.get().getChairGeneral());
+        String chairPreferentialNoAvaible = getChairNoAvailable(showTarget.get().getChairPreferential());
+
+        ShowAvailableChairResponseDto showAvailable = new ShowAvailableChairResponseDto(showTarget.get().getId()+"",chairGeneralNoAvailable,chairPreferentialNoAvaible);
+
+        return showAvailable;
+    }
+
+    private String getChairNoAvailable(String selectShow) {
+
+        String[] chairs = selectShow.split(",");
+        Set<String> chairNoAvaible = new HashSet<>();
+        for (int i = 0; i< chairs.length;i++){
+            if(chairs[i].equals("1")){
+                chairNoAvaible.add((i+1)+"");
+            }
+        }
+
+        return String.join(",", chairNoAvaible);
     }
 }
