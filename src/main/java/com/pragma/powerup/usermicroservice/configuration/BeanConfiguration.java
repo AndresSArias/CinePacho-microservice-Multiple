@@ -85,4 +85,14 @@ public class BeanConfiguration {
     public IInvoiceServicePort invoiceServicePort(){
         return new InvoiceUseCase(invoicePersistencePort());
     }
+
+    @Bean
+    public IStatisticPersistencePort statisticPersistencePort () {
+        return new StatisticMySqlAdapter(showInvoiceRepository,multiplexRepository);
+    }
+
+    @Bean IStatisticServicePort statisticServicePort () {
+        return  new StatisticUseCase(statisticPersistencePort());
+    }
+
 }
