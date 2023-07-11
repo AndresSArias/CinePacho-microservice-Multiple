@@ -12,7 +12,7 @@ import java.util.Map;
 
 
 @HttpExchange(
-        url = "http://localhost:8090/",
+        url = "https://cinepacho-microservice-users-production.up.railway.app",
         accept = "application/json",
         contentType = "application/json"
 )
