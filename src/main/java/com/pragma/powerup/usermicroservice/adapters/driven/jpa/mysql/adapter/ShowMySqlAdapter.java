@@ -73,24 +73,32 @@ public class ShowMySqlAdapter implements IShowPersistencePort {
         }
 
         List<ShowAliveResponseDto> showAlive = new ArrayList<>();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         Map<String, StringBuilder> hoursMap = new HashMap<>();
 
         for (MovieTheaterEntity show : showAllowedList) {
             String idTheater = show.getTheaterId().getId() + "";
-            String schedule = show.getSchedule().format(formato);
+            String day = show.getDay().format(dayFormatter);
+            String schedule = show.getSchedule().format(timeFormatter);
 
-            if (hoursMap.containsKey(idTheater)) {
-                hoursMap.get(idTheater).append(",").append(schedule);
+            String key = idTheater + "-" + day;
+
+            if (hoursMap.containsKey(key)) {
+                hoursMap.get(key).append(",").append(schedule);
             } else {
                 StringBuilder hoursBuilder = new StringBuilder(schedule);
-                hoursMap.put(idTheater, hoursBuilder);
+                hoursMap.put(key, hoursBuilder);
             }
         }
 
         for (Map.Entry<String, StringBuilder> entry : hoursMap.entrySet()) {
-            showAlive.add(new ShowAliveResponseDto(entry.getKey(), entry.getValue().toString()));
+            String[] keyParts = entry.getKey().split("-");
+            String idTheater = keyParts[0];
+            String day = keyParts[1];
+
+            showAlive.add(new ShowAliveResponseDto(idTheater, day,entry.getValue().toString()));
         }
 
         return showAlive;

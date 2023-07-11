@@ -10,6 +10,8 @@ import lombok.Setter;
 public class ShowAliveResponseDto {
 
     private String idTheater;
+
+    private  String day;
     private String hours;
 
 }
