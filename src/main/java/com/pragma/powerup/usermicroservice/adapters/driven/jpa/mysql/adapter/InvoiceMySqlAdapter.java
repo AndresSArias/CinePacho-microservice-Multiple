@@ -6,6 +6,7 @@ import com.pragma.powerup.usermicroservice.adapters.driven.jpa.mysql.repositorie
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.InvoiceCompleteRequestDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.InvoiceSnackRequestDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ObjectCreateResponseDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.QualificationRequestDto;
 import com.pragma.powerup.usermicroservice.domain.model.ShowInvoice;
 import com.pragma.powerup.usermicroservice.domain.spi.IInvoicePersistencePort;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,25 @@ public class InvoiceMySqlAdapter implements IInvoicePersistencePort {
     private final IShowInvoiceRepository showInvoiceRepository;
     private final ISnackRepository snackRepository;
     private final ISnackInvoiceRepository snackInvoiceRepository;
+
+    @Override
+    public void updateRating(QualificationRequestDto qualificationRequestDto) {
+        Optional<InvoiceEntity> invoiceEntity = invoiceRepository.findById(Long.parseLong(qualificationRequestDto.getIdInvoice()));
+        if(!invoiceEntity.isPresent()){
+            throw new InvoiceNoFoundException();
+        }
+        if(!invoiceEntity.get().getIdClient().equals(qualificationRequestDto.getNumberDocument()) || !invoiceEntity.get().getState().equals("PAGADO")){
+            throw new ClientCannotUpdateRaitingException();
+        }
+
+        if (invoiceEntity.get().getRatingMovie() == 0.0){
+            invoiceEntity.get().setRatingMovie(Double.parseDouble(qualificationRequestDto.getQualificationMovie()));
+        }else {
+            throw new ClientCannotUpdateRaitingException();
+        }
+        invoiceRepository.save(invoiceEntity.get());
+    }
+
     @Override
     public ObjectCreateResponseDto saveCompleteInvoice(InvoiceCompleteRequestDto invoiceCompleteRequestDto) {
         //CreateInvoice

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.pragma.powerup.usermicroservice.configuration.Constants.*;
+import static com.pragma.powerup.usermicroservice.configuration.Constants.CLIENT_CANNOT_UPDATE_RAITING_MESSAGE;
 
 @ControllerAdvice
 public class ControllerAdvisor {
@@ -110,6 +111,17 @@ public class ControllerAdvisor {
     public ResponseEntity<Map<String, String>> handleSelectChairReservedException(SelectChairReservedException selectChairReservedException){
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, SELECT_CHAIR_RESERVED_MESSAGE));
+    }
+    @ExceptionHandler(InvoiceNoFoundException.class)
+    public ResponseEntity<Map<String, String>> handleInvoiceNoFoundException (InvoiceNoFoundException invoiceNoFoundException){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, NO_INVOICE_EXIST_MESSAGE));
+    }
+    @ExceptionHandler(ClientCannotUpdateRaitingException.class)
+    public ResponseEntity<Map<String, String>> handleClientCannotUpdateRaitingException(
+            ClientCannotUpdateRaitingException clientCannotUpdateRaitingException) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Collections.singletonMap(RESPONSE_ERROR_MESSAGE_KEY, CLIENT_CANNOT_UPDATE_RAITING_MESSAGE));
     }
 
 

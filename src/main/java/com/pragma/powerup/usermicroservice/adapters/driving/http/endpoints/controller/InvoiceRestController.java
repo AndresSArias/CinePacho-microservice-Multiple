@@ -3,16 +3,18 @@ package com.pragma.powerup.usermicroservice.adapters.driving.http.endpoints.cont
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.InvoiceCompleteRequestDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.request.ScheduleRequestDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.ObjectCreateResponseDto;
+import com.pragma.powerup.usermicroservice.adapters.driving.http.dto.response.QualificationRequestDto;
 import com.pragma.powerup.usermicroservice.adapters.driving.http.handlers.IInvoiceHandler;
+import com.pragma.powerup.usermicroservice.configuration.Constants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/invoice")
@@ -27,6 +29,13 @@ public class InvoiceRestController {
     public ResponseEntity<ObjectCreateResponseDto> saveSchedule(@Valid @RequestBody InvoiceCompleteRequestDto invoiceCompleteRequestDto) {
 
         return ResponseEntity.ok(invoiceHandler.saveCompleteInvoice(invoiceCompleteRequestDto));
+    }
+
+    @Operation(summary = "Update rating of viewed movie Cine Pacho by Client")
+    @PutMapping("/qualification/movie")
+    public ResponseEntity<Map<String, String>> updateRating (@Valid @RequestBody QualificationRequestDto qualificationRequestDto) {
+        invoiceHandler.updateRating(qualificationRequestDto);
+        return ResponseEntity.ok().body(Collections.singletonMap(Constants.RESPONSE_MESSAGE_KEY, Constants.RAITING_MOVIE_UPDATED_MESSAGE));
     }
 
 }

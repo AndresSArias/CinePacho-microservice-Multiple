@@ -24,11 +24,13 @@ public class Constants {
     public static final String NO_THEATER_FOUND_MESSAGE = "The theater is not found with idTheater provided";
     public static final String NO_CREATE_SHOW_MESSAGE = "A Show already exists with the day and schedule provided";
     public static final String NO_SHOW_EXIST_MESSAGE = "The show no exist with scheduler provided";
+    public static final String NO_INVOICE_EXIST_MESSAGE = "The invoice no exist with idInvoice provided";
+    public static final String CLIENT_CANNOT_UPDATE_RAITING_MESSAGE = "The client cannot update qualification of move because already updated or does not belong to client or the invoice is not paid";
     public static final String SELECT_CHAIR_RESERVED_MESSAGE = "A chair select for show alrady stay reserved";
     public static final String STATE_PROGRESS = "EN PROCESO";
     public static final String STATE_COMPLETE = "PAGADO";
     public static final String PHONE_LENGHT_MESSAGE = "The lenght of Phone is over 13";
-    public static final String NAME_RESTAURANT_EXCEPTION = "The name of restaurant cant be only numbers";
+    public static final String RAITING_MOVIE_UPDATED_MESSAGE = "The qualification of movie update successfully";
     public static final String NO_DATA_FOUND_MESSAGE = "No data found for the requested petition";
     public static final String PLATE_CREATED_MESSAGE = "Plate created successfully";
     public static final String ORDER_CREATED_MESSAGE = "Order created successfully, awaits the call for delivery";
