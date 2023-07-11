@@ -1,8 +1,8 @@
 <br />
 <div align="center">
-<h3 align="center">PRAGMA POWER-UP</h3>
+<h3 align="center">CinePacho-microservice-Multiplexs</h3>
   <p align="center">
-    In this challenge I am going to design the backend of a system that centralizes the services and orders of a restaurant chain that has different branches in the city.This is Microservice of Plazoleta, this services resolve the HU2, HU3, HU4, HU7, HU9 and HU10 with the conexion of Microservice of Users.
+    Installation guide for the backend of a system that centralizes the services of a cinema chain that has different multiplexes in the city. This is the Multiplex Microservice, this service solves the requirements presented along with the User Microservice connection.
   </p>
 </div>
 
@@ -34,25 +34,25 @@ To get a local copy up and running follow these steps.
 1. Clone the repository
 2. Change directory
    ```sh
-   cd PowerUp-Reto-microservicePlazoleta
+   cd CinePacho-microservice-Multiplexs
    ```
 3. Execute the script of "scriptCreationDB" in resource (src/main/resources/scriptCreationDB.sql).
-4. Update the database connection settings
+4. After the tables are created with the first execute microservice, execute src/main/resources/scriptInitialFillDB.sql content to populate the database
+5. Update the database connection settings
    ```yml
    # src/main/resources/application-dev.yml
    spring:
       datasource:
-          url: jdbc:mysql://localhost/powerup
+          url: jdbc:mysql://localhost/cinepacho_dbmultiplexs
           username: root
           password: <your-password>
    ```
-5. After the tables are created with the first execute microservice, execute src/main/resources/scriptInitialFillDB.sql content to populate the database
 6. Open Swagger UI and search for the endpoint you want to use, remember to have the token generated from the User microservice.
 
 <!-- USAGE -->
 ## Usage
 
-1. Right-click the class PowerUpApplication and choose Run
+1. Right-click the class UserMicroserviceApplication and choose Run
 2. Open [http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html) in your web browser
 
 <!-- ROADMAP -->
