@@ -1,8 +1,8 @@
 <br />
 <div align="center">
-<h3 align="center">CinePacho-microservice-Multiplexs</h3>
+<h3 align="center">CINE PACHO, MICROSERVICE MULTIPLEXS</h3>
   <p align="center">
-    Installation guide for the backend of a system that centralizes the services of a cinema chain that has different multiplexes in the city. This is the Multiplex Microservice, this service solves the requirements presented along with the User Microservice connection.
+    Installation guide for the backend of a system that resolve the services of a cinema chain that has different multiplexes in the city. This is the Multiplexs Microservice, this service solves the requirements presented along with the Users Microservice connection.
   </p>
 </div>
 
@@ -47,7 +47,7 @@ To get a local copy up and running follow these steps.
           username: root
           password: <your-password>
    ```
-6. Open Swagger UI and search for the endpoint you want to use, remember to have the token generated from the User microservice.
+6. Open Swagger UI and search for the endpoint you want to use, remember to have the token generated from the Users microservice.
 
 <!-- USAGE -->
 ## Usage
